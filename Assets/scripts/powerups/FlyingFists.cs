@@ -9,6 +9,7 @@ public class FlyingFists : Powerup {
 
 	void Start () {
 		LifeSpan = 5f;
+		Rate = .05f;
 	}
 
 	protected override void Action() {

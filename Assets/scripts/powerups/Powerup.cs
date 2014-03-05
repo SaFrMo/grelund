@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Powerup : MonoBehaviour {
 
 	// BASE CLASS FOR ALL POWERUPS
 	// =============================
 	// All powerups:
 	//		X Activate on player touch
-	//		Have a lifespan, then are destroyed
-	//		Are destroyed when the go offscreen
+	//		X Have a lifespan, then are destroyed
+	//		X Are destroyed when they go offscreen
 
 	protected Timer lifeTimer = null;
+
+	// Everything here needs to be overridden in the derived class
 	public virtual float LifeSpan { get; protected set; }
+	public virtual float Rate { get; protected set; }
 	protected virtual void Action () {}
+
 
 
 	protected void OnCollisionEnter (Collision c) {
@@ -41,6 +46,19 @@ public class Powerup : MonoBehaviour {
 			if (lifeTimer.RunTimer()) {
 				Destroy (gameObject);
 			}
+		}
+
+		rigidbody.MovePosition (transform.position + 
+		                        Vector3.down * Rate //+ //* MovementModifier() +
+		                        //Vector3.left * MovementModifier() +
+		                        //Vector3.right * MovementModifier());
+		                        );
+		
+		// destroy when offscreen
+		if (Camera.main.WorldToViewportPoint(transform.position).y < -.5f ||
+		    Camera.main.WorldToViewportPoint(transform.position).x > 1.5f ||
+		    Camera.main.WorldToViewportPoint(transform.position).x < -0.5f) {
+			Destroy (gameObject);
 		}
 	}
 }
