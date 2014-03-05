@@ -5,12 +5,15 @@ public class DoubtSpawner : MonoBehaviour {
 
 	public GameObject doubtPrefab;
 
-	Timer t = new Timer (0.5f, true);
+	public float rate;
+
+	Timer t;
 
 	bool goingRight = false;
 
 	void Start () {
 		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (0, Screen.height, 0));
+		t = new Timer (rate, true);
 	}
 
 	void Update () {

@@ -8,5 +8,11 @@ public class test : MonoBehaviour {
 			gameObject.GetComponent<CreateItem>().Create ("Pawn");
 		}
 
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.Quit();
+		}
+
 	}
+
+
 }

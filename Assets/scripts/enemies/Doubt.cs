@@ -37,7 +37,8 @@ public class Doubt : ENEMY_BASE {
 		                        Vector3.left * MovementModifier() +
 		                        Vector3.right * MovementModifier());
 		if (transform.localScale.magnitude <= 0.25f) {
-			StopExisting();
+			//StopExisting();
+			transform.localScale = new Vector3 (0.25f, 0.25f, 0.25f);
 		}
 	}
 }
