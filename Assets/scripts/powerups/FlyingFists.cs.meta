@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: 8bb9dc8ac1244e9478ad8383e27984b7
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - flyingFistPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

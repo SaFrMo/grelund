@@ -3,8 +3,6 @@ using System.Collections;
 
 public class TeamWork : MonoBehaviour {
 
-	string playerTag = "Player";
-
 	// TEAMWORK
 	// ===========
 	// Register player collision. Create a Net object in between the players. Net object moves with players.

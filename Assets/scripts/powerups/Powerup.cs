@@ -12,6 +12,7 @@ public class Powerup : MonoBehaviour {
 	//		X Are destroyed when they go offscreen
 
 	protected Timer lifeTimer = null;
+	protected GameObject activator = null;
 
 	// Everything here needs to be overridden in the derived class
 	public virtual float LifeSpan { get; protected set; }
@@ -32,6 +33,10 @@ public class Powerup : MonoBehaviour {
 				GetComponent<MeshRenderer>().enabled = false;
 				GetComponent<BoxCollider>().enabled = false;
 				lifeTimer = new Timer (LifeSpan);
+				// stops the powerup so it doesn't destroy when going offscreen
+				Rate = 0;
+				// tags the colliding player as the activator
+				activator = c.gameObject;
 			}
 			// keeps player from drifting
 			c.rigidbody.velocity = Vector3.zero;
