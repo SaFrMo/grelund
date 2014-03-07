@@ -18,7 +18,7 @@ public class FlyingFists : Powerup {
 	protected override void Action() {
 		if (fistCreation.RunTimer()) {
 			GameObject fist = GameObject.Instantiate (flyingFistPrefab) as GameObject;
-			fist.transform.position = activator.transform.position;
+			fist.transform.position = activator.transform.position + Vector3.up;
 		}
 	}
 

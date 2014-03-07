@@ -25,7 +25,8 @@ public class Doubt : ENEMY_BASE {
 		                                     transform.localScale.z - scaleRate);
 	}
 
-	void StopExisting() {
+	public void StopExisting() {
+		// destruction animation
 		Destroy (gameObject);
 	}
 
