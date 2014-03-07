@@ -16,6 +16,7 @@ public class TeamWork : MonoBehaviour {
 
 
 	// Register player collision
+	/*
 	void OnCollisionEnter (Collision c) {
 		if (c.gameObject.CompareTag (playerTag)) {
 			if (NET == null) {
@@ -27,4 +28,18 @@ public class TeamWork : MonoBehaviour {
 			}
 		}
 	}
+	*/
+
+	void Update () {
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			if (NET == null) {
+				// Create Net object in between players
+				NET = GameObject.Instantiate (netPrefab) as GameObject;
+			}
+			else {
+				NET.GetComponent<NetBehavior>().Gather();
+			}
+		}
+	}
+
 }

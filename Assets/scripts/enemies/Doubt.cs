@@ -6,14 +6,13 @@ public class Doubt : ENEMY_BASE {
 
 	Color DOUBT_COLOR = Color.red;
 
-	public float Rate { get; set; }
+	public float rate = 0.05f;
 	public float Constant { get; set; }
 
 	public float scaleRate = 0.001f;
 
 	void Start () {
 		renderer.material.color = DOUBT_COLOR;
-		Rate = 0.05f;
 	}
 
 	float MovementModifier () {
@@ -33,7 +32,7 @@ public class Doubt : ENEMY_BASE {
 	// Update is called once per frame
 	void Update () {
 		rigidbody.MovePosition (transform.position + 
-		                        Vector3.down * Rate + //* MovementModifier() +
+		                        Vector3.down * rate + //* MovementModifier() +
 		                        Vector3.left * MovementModifier() +
 		                        Vector3.right * MovementModifier());
 		if (transform.localScale.magnitude <= 0.25f) {
