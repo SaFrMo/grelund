@@ -19,6 +19,11 @@ public class Powerup : MonoBehaviour {
 	public virtual float Rate { get; protected set; }
 	protected virtual void Action () {}
 
+	// this can be overridden to give increased on-destruction functionality
+	protected virtual void Complete () {
+		Destroy (gameObject);
+	}
+
 
 
 	protected void OnCollisionEnter (Collision c) {
@@ -49,6 +54,7 @@ public class Powerup : MonoBehaviour {
 			Action ();
 			// kills the powerup's effect after a set time
 			if (lifeTimer.RunTimer()) {
+				//Complete ();
 				Destroy (gameObject);
 			}
 		}

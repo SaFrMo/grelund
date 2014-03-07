@@ -22,4 +22,7 @@ public class FlyingFists : Powerup {
 		}
 	}
 
+	//protected override void Complete () {
+
+
 }
