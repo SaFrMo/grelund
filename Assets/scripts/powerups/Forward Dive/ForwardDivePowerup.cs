@@ -6,17 +6,17 @@ public class ForwardDivePowerup : Powerup {
 	public float rate;
 
 	protected override void Action() {
-		/*
-		if (!activator.GetComponent<BoxCollider>().isTrigger) {
-			activator.GetComponent<BoxCollider>().isTrigger = true;
-		}
-		*/
 		activator.transform.Translate (Vector3.up * rate);
+		if (Mathf.Abs (activator.transform.position.z) <= 1f) {
+			activator.transform.position = activator.transform.position + Vector3.back;
+		}
 	}
 
 	protected override void Complete () {
-		activator.GetComponent<BoxCollider>().isTrigger = false;
-		base.Complete();
+		activator.transform.position = new Vector3 (activator.transform.position.x,
+		                                            activator.transform.position.y,
+		                                            0);
+		Destroy (gameObject);
 	}
 
 

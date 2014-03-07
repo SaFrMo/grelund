@@ -38,7 +38,7 @@ public class Powerup : MonoBehaviour {
 				GetComponent<MeshRenderer>().enabled = false;
 				GetComponent<BoxCollider>().enabled = false;
 				lifeTimer = new Timer (LifeSpan);
-				// stops the powerup so it doesn't destroy when going offscreen
+				// stops the powerup so it doesn't destroy itself when going offscreen after activation
 				Rate = 0;
 				// tags the colliding player as the activator
 				activator = c.gameObject;
@@ -54,8 +54,8 @@ public class Powerup : MonoBehaviour {
 			Action ();
 			// kills the powerup's effect after a set time
 			if (lifeTimer.RunTimer()) {
-				//Complete ();
-				Destroy (gameObject);
+				Complete ();
+				//Destroy (gameObject);
 			}
 		}
 
@@ -65,7 +65,8 @@ public class Powerup : MonoBehaviour {
 		                        //Vector3.right * MovementModifier());
 		                        );
 		
-		// destroy when offscreen
+		// destroy when offscreen (the .5s allow for some give so that they don't disappear while still
+		// partially onscreen)
 		if (Camera.main.WorldToViewportPoint(transform.position).y < -.5f ||
 		    Camera.main.WorldToViewportPoint(transform.position).x > 1.5f ||
 		    Camera.main.WorldToViewportPoint(transform.position).x < -0.5f) {

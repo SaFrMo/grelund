@@ -18,6 +18,7 @@ public class WASDMovement : MonoBehaviour {
 
 	// rate at which to move
 	public float movementRate = 0.5f;
+	float movementRateOriginal;
 	public float YCurrent { get; private set; }
 
 
@@ -36,6 +37,14 @@ public class WASDMovement : MonoBehaviour {
 		else {
 			return Vector3.zero;
 		}
+	}
+
+	public void SpeedChange (float amount) {
+		movementRate *= amount;
+	}
+
+	public void NormalSpeed() {
+		movementRate = movementRateOriginal;
 	}
 
 	// MAIN CONTROLS
@@ -61,6 +70,7 @@ public class WASDMovement : MonoBehaviour {
 
 	void Start () {
 		YCurrent = transform.position.y;
+		movementRateOriginal = movementRate;
 	}
 
 	protected void FixedUpdate () {

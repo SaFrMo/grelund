@@ -5,13 +5,13 @@ using System.Collections;
 public class Doubt : ENEMY_BASE {
 
 	Color DOUBT_COLOR = Color.red;
-
-	public float rate = 0.05f;
+	
 	public float Constant { get; set; }
 
 	public float scaleRate = 0.001f;
 
-	void Start () {
+	protected override void Start () {
+		base.Start();
 		renderer.material.color = DOUBT_COLOR;
 	}
 
@@ -25,9 +25,10 @@ public class Doubt : ENEMY_BASE {
 		                                     transform.localScale.z - scaleRate);
 	}
 
-	public void StopExisting() {
+	public override void Complete() {
+		base.Complete ();
 		// destruction animation
-		Destroy (gameObject);
+
 	}
 
 	// Update is called once per frame
@@ -45,7 +46,8 @@ public class Doubt : ENEMY_BASE {
 		if (Camera.main.WorldToViewportPoint(transform.position).y < -.5f ||
 		    Camera.main.WorldToViewportPoint(transform.position).x > 1.5f ||
 		    Camera.main.WorldToViewportPoint(transform.position).x < -0.5f) {
-			Destroy (gameObject);
+			Complete ();
+			//Destroy (gameObject);
 		}
 	}
 }

@@ -9,7 +9,7 @@ public class ActualFlyingFists : MonoBehaviour {
 
 	void OnCollisionEnter (Collision c) {
 		if (!c.gameObject.CompareTag ("Player")) {
-			c.gameObject.GetComponent<Doubt>().StopExisting();
+			c.gameObject.GetComponent<Doubt>().Complete();
 			Destroy (gameObject);
 		}
 	}
