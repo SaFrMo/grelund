@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DoubtSpawner : MonoBehaviour {
 
-	public GameObject doubtPrefab;
+	public List<GameObject> toSpawn;
 
 	public float rate;
 
@@ -22,7 +23,7 @@ public class DoubtSpawner : MonoBehaviour {
 		}
 
 		if (t.RunTimer()) {
-			GameObject go = Instantiate (doubtPrefab) as GameObject;
+			GameObject go = Instantiate (toSpawn[UnityEngine.Random.Range(0, toSpawn.Count - 1)]) as GameObject;
 			go.transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
 		}
 

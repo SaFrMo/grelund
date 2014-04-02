@@ -18,6 +18,7 @@ public class FogPowerup : Powerup {
 	protected override void Action() {
 		if (fog == null) {
 			fog = Instantiate (fogPrefab) as GameObject;
+			fog.transform.position = new Vector3 (0, 0, -5);
 
 			player1Orb = Instantiate (orb) as GameObject;
 			player1Orb.GetComponent<Orb>().Leash = GameManager.PLAYER_1;
