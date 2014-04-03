@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FogPowerup : Powerup {
 
-	public float maximumHeatSeekingSpeed = 5f;
+	public float maximumHeatSeekingSpeed = 0.2f;
 
 	public GameObject fogPrefab;
 	public GameObject orb;
@@ -42,7 +42,8 @@ public class FogPowerup : Powerup {
 			closestPlayer = GameManager.PLAYER_2;
 		}
 		// move toward the closer player
-		rigidbody.MovePosition (Vector3.MoveTowards (transform.position, closestPlayer.transform.position, maximumHeatSeekingSpeed * Time.deltaTime));
+		rigidbody.MovePosition (new Vector3(Vector3.MoveTowards (transform.position, closestPlayer.transform.position, maximumHeatSeekingSpeed * Time.deltaTime).x,
+		                                    (transform.position + Vector3.down * Rate).y));
 	}
 
 	protected override void Complete () {
