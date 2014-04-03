@@ -48,7 +48,11 @@ public class Powerup : MonoBehaviour {
 		}
 	}
 
-	protected void Update () {
+	protected virtual void DownwardMotion () {
+		rigidbody.MovePosition (transform.position + Vector3.down * Rate );
+	}
+
+	protected virtual void Update () {
 		if (lifeTimer != null) {
 			// runs Action() while the powerup is still "alive"
 			Action ();
@@ -59,11 +63,11 @@ public class Powerup : MonoBehaviour {
 			}
 		}
 
-		rigidbody.MovePosition (transform.position + 
-		                        Vector3.down * Rate //+ //* MovementModifier() +
+		DownwardMotion();
+		//+ //* MovementModifier() +
 		                        //Vector3.left * MovementModifier() +
 		                        //Vector3.right * MovementModifier());
-		                        );
+		                        
 		
 		// destroy when offscreen (the .5s allow for some give so that they don't disappear while still
 		// partially onscreen)
