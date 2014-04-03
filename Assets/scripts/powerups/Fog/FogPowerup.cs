@@ -5,10 +5,12 @@ public class FogPowerup : Powerup {
 
 	public float maximumHeatSeekingSpeed = 0.2f;
 
+	static bool fogOn = false;
+
 	public GameObject fogPrefab;
 	public GameObject orb;
 
-	GameObject fog = null;
+	static GameObject fog = null;
 	static GameObject player1Orb = null;
 	static GameObject player2Orb = null;
 
@@ -20,7 +22,9 @@ public class FogPowerup : Powerup {
 	}
 
 	protected override void Action() {
-		if (fog == null) {
+		if (!fogOn) {
+			fogOn = true;
+
 			fog = Instantiate (fogPrefab) as GameObject;
 			fog.transform.position = new Vector3 (0, 0, -5);
 
@@ -48,6 +52,9 @@ public class FogPowerup : Powerup {
 
 	protected override void Complete () {
 		Destroy (fog);
+		Destroy (player1Orb);
+		Destroy (player2Orb);
+		fogOn = false;
 		base.Complete ();
 	}
 }

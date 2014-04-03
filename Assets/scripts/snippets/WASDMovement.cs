@@ -67,6 +67,17 @@ public class WASDMovement : MonoBehaviour {
 		rigidbody.velocity = Vector3.zero;
 	}
 
+	// ROTATION - JUST DECORATION
+	// ===========================
+	Vector3 lastPosition;
+	void Bank () {
+		if (transform.position.x != lastPosition.x) {
+			transform.RotateAround (transform.position, Vector3.up, (transform.position.x > lastPosition.x ?
+			                                                         -5f : 5f));
+		}
+		lastPosition = transform.position;
+	}
+
 
 	void Start () {
 		YCurrent = transform.position.y;
@@ -75,6 +86,9 @@ public class WASDMovement : MonoBehaviour {
 
 	protected void FixedUpdate () {
 		Controls();
+	}
 
+	void Update () {
+		Bank();
 	}
 }
