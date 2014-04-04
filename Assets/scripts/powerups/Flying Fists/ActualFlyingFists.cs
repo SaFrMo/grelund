@@ -22,9 +22,10 @@ public class ActualFlyingFists : MonoBehaviour {
 		                        );
 		
 		// destroy when offscreen
-		if (Camera.main.WorldToViewportPoint(transform.position).y < -.5f ||
-		    Camera.main.WorldToViewportPoint(transform.position).x > 1.5f ||
-		    Camera.main.WorldToViewportPoint(transform.position).x < -0.5f) {
+		if (Camera.main.WorldToViewportPoint(transform.position).y < 0f ||
+		    Camera.main.WorldToViewportPoint(transform.position).x > 1f ||
+		    Camera.main.WorldToViewportPoint(transform.position).x < 0f) {
+			print ("off");
 			Destroy (gameObject);
 		}
 
