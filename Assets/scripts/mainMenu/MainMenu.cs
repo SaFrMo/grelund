@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour {
 
-	public string gameName = "ShipStorm";
-	public string clickText = "Click to start!";
+	public string gameName = "You seem to have died...";
+	public string clickText = "Click to try again";
 
 	public GUISkin skin;
 
