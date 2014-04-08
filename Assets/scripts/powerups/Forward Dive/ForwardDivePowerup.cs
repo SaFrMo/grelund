@@ -6,6 +6,7 @@ public class ForwardDivePowerup : Powerup {
 	public float rate;
 
 	protected override void Action() {
+		base.Action ();
 		if (Camera.main.WorldToScreenPoint (activator.transform.position).y >= 0) {
 			activator.transform.Translate (Vector3.up * rate);
 		}

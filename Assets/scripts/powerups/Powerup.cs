@@ -17,7 +17,13 @@ public class Powerup : MonoBehaviour {
 	// Everything here needs to be overridden in the derived class
 	public virtual float LifeSpan { get; protected set; }
 	public virtual float Rate { get; protected set; }
-	protected virtual void Action () {}
+
+	protected virtual void Action () {
+		// destroy attached models
+		foreach (Transform child in transform) {
+			Destroy (child.gameObject);
+		}
+	}
 
 	// this can be overridden to give increased on-destruction functionality
 	protected virtual void Complete () {

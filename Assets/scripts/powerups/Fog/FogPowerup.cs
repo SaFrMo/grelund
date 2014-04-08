@@ -22,6 +22,7 @@ public class FogPowerup : Powerup {
 	}
 
 	protected override void Action() {
+		base.Action ();
 		if (!fogOn) {
 			fogOn = true;
 
