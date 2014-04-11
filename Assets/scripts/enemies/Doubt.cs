@@ -16,7 +16,7 @@ public class Doubt : ENEMY_BASE {
 	}
 
 	float MovementModifier () {
-		return 1;//UnityEngine.Random.Range(0, Rate) * 0.0002f;
+		return 2;//UnityEngine.Random.Range(0, Rate) * 0.0002f;
 	}
 
 	void OnCollisionStay (Collision c) {
