@@ -52,6 +52,9 @@ public class Powerup : MonoBehaviour {
 			// keeps player from drifting
 			c.rigidbody.velocity = Vector3.zero;
 		}
+		else {
+			Physics.IgnoreCollision(c.collider, collider);
+		}
 	}
 
 	protected virtual void DownwardMotion () {
