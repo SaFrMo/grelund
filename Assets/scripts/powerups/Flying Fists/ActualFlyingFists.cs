@@ -7,6 +7,13 @@ public class ActualFlyingFists : MonoBehaviour {
 
 	Timer life = new Timer (1f);
 
+	ParticleSystem ps;
+
+	void Start () {
+		ps = GetComponentInChildren<ParticleSystem>();
+
+	}
+
 	void OnCollisionEnter (Collision c) {
 		if (!c.gameObject.CompareTag ("Player")) {
 			c.gameObject.GetComponent<Doubt>().Complete();
@@ -15,6 +22,13 @@ public class ActualFlyingFists : MonoBehaviour {
 	}
 
 	void Update () {
+		print (transform.position);
+		/*
+		if (!ps.isPlaying) {
+
+			ps.Play ();
+		}
+*/
 		rigidbody.MovePosition (transform.position + 
 		                        Vector3.up * rate //+ //* MovementModifier() +
 		                        //Vector3.left * MovementModifier() +
