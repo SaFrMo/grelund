@@ -19,11 +19,13 @@ public class Doubt : ENEMY_BASE {
 		return 2;//UnityEngine.Random.Range(0, Rate) * 0.0002f;
 	}
 
+	/*
 	void OnCollisionStay (Collision c) {
 		transform.localScale = new Vector3 (transform.localScale.x - scaleRate,
 		                                     transform.localScale.y - scaleRate,
 		                                     transform.localScale.z - scaleRate);
 	}
+	*/
 
 	public override void Complete() {
 		base.Complete ();
@@ -34,13 +36,15 @@ public class Doubt : ENEMY_BASE {
 	// Update is called once per frame
 	void Update () {
 		rigidbody.MovePosition (transform.position + 
-		                        Vector3.down * rate + //* MovementModifier() +
+		                        Vector3.down * movementRate + //* MovementModifier() +
 		                        Vector3.left * MovementModifier() +
 		                        Vector3.right * MovementModifier());
 		if (transform.localScale.magnitude <= 0.25f) {
 			//StopExisting();
 			transform.localScale = new Vector3 (0.25f, 0.25f, 0.25f);
 		}
+
+
 
 		// destroy when offscreen
 		if (Camera.main.WorldToViewportPoint(transform.position).y < -.5f ||

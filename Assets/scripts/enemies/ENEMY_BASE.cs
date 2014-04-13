@@ -3,19 +3,19 @@ using System.Collections;
 
 public class ENEMY_BASE : MonoBehaviour {
 
-	protected float rate = 0.05f;
+	public float movementRate = 0.05f;
 	protected float rateOriginal;
 
 	public void SpeedChange (float amount) {
-		rate *= amount;
+		movementRate *= amount;
 	}
 
 	public void NormalSpeed () {
-		rate = rateOriginal;
+		movementRate = rateOriginal;
 	}
 
 	protected virtual void Start () {
-		rateOriginal = rate;
+		rateOriginal = movementRate;
 		GameManager.Enemies.Add (gameObject);
 	}
 

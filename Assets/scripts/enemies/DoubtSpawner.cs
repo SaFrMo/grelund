@@ -10,28 +10,18 @@ public class DoubtSpawner : MonoBehaviour {
 
 	Timer t;
 
-	bool goingRight = false;
-
 	void Start () {
-		transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (0, Screen.height, 0));
+		//transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (0, Screen.height, 0));
 		t = new Timer (rate, true);
 	}
 
 	void Update () {
-		if (Camera.main.WorldToScreenPoint (transform.position).x >= Screen.width || Camera.main.WorldToScreenPoint (transform.position).x <= 0) {
-			goingRight = !goingRight;
-		}
-
 		if (t.RunTimer()) {
 			GameObject go = Instantiate (toSpawn[UnityEngine.Random.Range(0, toSpawn.Count - 1)]) as GameObject;
-			go.transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
-		}
-
-		if (goingRight) {
-			transform.Translate (Vector3.right);
-		}
-		else if (!goingRight) {
-			transform.Translate (Vector3.left);
+			Vector3 randomLoc = Camera.main.ScreenToWorldPoint(new Vector3 (UnityEngine.Random.Range (0, Screen.width),
+			                                                                Screen.height, 0));
+			randomLoc.z = 0;
+			go.transform.position = randomLoc;//= new Vector3 (transform.position.x, transform.position.y, 0);
 		}
 	}
 }
