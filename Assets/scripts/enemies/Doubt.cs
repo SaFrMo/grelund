@@ -34,7 +34,8 @@ public class Doubt : ENEMY_BASE {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	protected override void Update () {
+		base.Update();
 		rigidbody.MovePosition (transform.position + 
 		                        Vector3.down * movementRate + //* MovementModifier() +
 		                        Vector3.left * MovementModifier() +
