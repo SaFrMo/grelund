@@ -17,7 +17,7 @@ public class DoubtSpawner : MonoBehaviour {
 
 	void Update () {
 		if (t.RunTimer()) {
-			GameObject go = Instantiate (toSpawn[UnityEngine.Random.Range(0, toSpawn.Count - 1)]) as GameObject;
+			GameObject go = Instantiate (toSpawn[UnityEngine.Random.Range(0, toSpawn.Count)]) as GameObject;
 			Vector3 randomLoc = Camera.main.ScreenToWorldPoint(new Vector3 (UnityEngine.Random.Range (0, Screen.width),
 			                                                                Screen.height, 0));
 			randomLoc.z = 0;

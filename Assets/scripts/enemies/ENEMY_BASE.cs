@@ -6,8 +6,8 @@ public class ENEMY_BASE : MonoBehaviour {
 	public float movementRate = 0.05f;
 	protected float rateOriginal;
 
-	public float lowRotation = -150f;
-	public float highRotation = 150f;
+	protected float lowRotation = -75f;
+	protected float highRotation = 75f;
 	
 	private float rotationX;
 	private float rotationY;
@@ -35,8 +35,8 @@ public class ENEMY_BASE : MonoBehaviour {
 	}
 
 	protected virtual void Update () {
-		transform.RotateAround (transform.position, Vector3.right, rotationX);
-		transform.RotateAround (transform.position, Vector3.forward, rotationZ);
-		transform.RotateAround (transform.position, Vector3.up, rotationY);
+		transform.RotateAround (transform.position, Vector3.right, rotationX * Time.deltaTime);
+		transform.RotateAround (transform.position, Vector3.forward, rotationZ * Time.deltaTime);
+		transform.RotateAround (transform.position, Vector3.up, rotationY * Time.deltaTime);
 	}
 }
