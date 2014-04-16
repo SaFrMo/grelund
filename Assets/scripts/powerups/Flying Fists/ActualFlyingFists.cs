@@ -16,7 +16,12 @@ public class ActualFlyingFists : MonoBehaviour {
 
 	void OnCollisionEnter (Collision c) {
 		if (!c.gameObject.CompareTag ("Player")) {
+			try {
 			c.gameObject.GetComponent<Doubt>().Complete();
+			}
+			catch {
+				Debug.Log ("Hit object didn't have <Doubt> component");
+			}
 			//particleSystem.Stop ();
 		}
 	}

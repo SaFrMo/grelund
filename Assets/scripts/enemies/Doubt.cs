@@ -29,6 +29,7 @@ public class Doubt : ENEMY_BASE {
 
 	public override void Complete() {
 		base.Complete ();
+		print ("Destryoed");
 		// destruction animation
 
 	}
@@ -48,8 +49,8 @@ public class Doubt : ENEMY_BASE {
 
 
 		// destroy when offscreen
-		if (Camera.main.WorldToViewportPoint(transform.position).y < -.5f ||
-		    Camera.main.WorldToViewportPoint(transform.position).x > 1.5f ||
+		if (Camera.main.WorldToViewportPoint(transform.position).y < -.2f ||
+		    Camera.main.WorldToViewportPoint(transform.position).x > 1.2f ||
 		    Camera.main.WorldToViewportPoint(transform.position).x < -0.5f) {
 			Complete ();
 			//Destroy (gameObject);
